@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Articles</th>
+            <th>Joined</th>
+            <th colspan="3">Action</th>
+        <tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.articles.length %></td>
+                <td><%= user.created_at %></td>
+                <td><%= link_to 'View', user_path(user) %></td>
+                <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                <td><%= link_to 'Delete', user_path(user), data: {"turbo-method": :delete, "turbo-confirm": "Are you sure?"} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
