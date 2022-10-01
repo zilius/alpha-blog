@@ -12,10 +12,14 @@
             <tr>
                 <td><%= article.title %></td>
                 <td><%= article.description %></td>
-                <td><%= article.user.username %></td>
-                <td><%= link_to 'View', article_path(article) %></td>
-                <td><%= link_to 'Edit', edit_article_path(article) %></td>
-                <td><%= link_to 'Delete', article_path(article), data: {"turbo-method": :delete, "turbo-confirm": "Are you sure?"} %></td>
+                <% if article.user %>
+                    <td><%= link_to article.user.username, user_path(article.user) %></td>
+                <% else %>
+                    <td><%= article.user.username %></td>
+                <% end %>
+                <td><%= link_to "View", article_path(article) %></td>
+                <td><%= link_to "Edit", edit_article_path(article) %></td>
+                <td><%= link_to "Delete", article_path(article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %></td>
             </tr>
         <% end %>
     </tbody>

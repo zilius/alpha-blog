@@ -2,6 +2,10 @@
 <% # galima ir su skliausteliais pasirodo :) %>
 <%= gravatar_for(@user, size: 200) %>
 
+<div>
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn" %>
+</div>
+
 <h3> User articles: </h3>
 
-<%= render 'articles/article' %>
+<%= render "articles/article" %>
