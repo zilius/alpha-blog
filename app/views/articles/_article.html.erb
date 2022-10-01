@@ -18,7 +18,7 @@
                     <td><%= article.user.username %></td>
                 <% end %>
                 <td><%= link_to "View", article_path(article) %></td>
-                <% if logged_in? && article.user == current_user %>
+                <% if logged_in? && article.user == current_user || current_user.admin? %>
                     <td><%= link_to "Edit", edit_article_path(article) %></td>
                     <td><%= link_to "Delete", article_path(article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %></td>
                 <% end %>
