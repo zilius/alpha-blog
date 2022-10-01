@@ -16,8 +16,10 @@
                 <td><%= user.articles.length %></td>
                 <td><%= user.created_at %></td>
                 <td><%= link_to 'View', user_path(user) %></td>
-                <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                <td><%= link_to 'Delete', user_path(user), data: {"turbo-method": :delete, "turbo-confirm": "Are you sure?"} %></td>
+                <% if logged_in? && user == current_user %>
+                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                    <td><%= link_to 'Delete', user_path(user), data: {"turbo-method": :delete, "turbo-confirm": "Are you sure?"} %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>
