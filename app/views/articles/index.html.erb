@@ -4,8 +4,10 @@
 
 <%= render 'article' %>
 <p>
+    <% if logged_in? %>
     <%= link_to 'Add', new_article_path %>
     <%= link_to 'Home', root_path %>
+    <% end %>
 <p>
 
 <%= will_paginate @articles, :container => false %>
