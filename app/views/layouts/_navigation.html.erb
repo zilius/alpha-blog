@@ -10,6 +10,8 @@
 <% if logged_in? %>
     <%= link_to current_user.username, user_path(current_user), class: "navbarItem" %>
     <%= link_to "Logout", delete_path, class: "navbarItem", data: { "turbo-method": :delete } %>
+    <%= link_to "Delete profile", user_path(current_user), class: "navbarItem", data: { "turbo-method": :delete } %>
+
 <% else %>
     <%= link_to "Login", login_path, class: "navbarItem" %>
     <%= link_to "Sign Up", signup_path, class: "navbarItem" %>
