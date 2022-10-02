@@ -1,0 +1,22 @@
+<div>
+<p>
+<%= link_to "Home", root_path, class: "navbarItem" %>
+<%= link_to "Articles", articles_path, class: "navbarItem" %>
+<% if logged_in? %>
+    Profile <%= link_to current_user.username, user_path(current_user) %>
+    <%= link_to "New Article", new_article_path, class: "navbarItem" %>
+<% end %>
+<%= link_to "Bloggers", users_path, class: "navbarItem" %>
+<% if logged_in? %>
+    <%= "Admin" if current_user.admin?%>
+    <%= link_to current_user.username, user_path(current_user), class: "navbarItem" %>
+    <%= link_to "Logout", delete_path, class: "navbarItem", data: { "turbo-method": :delete } %>
+    <%= link_to "Delete profile", user_path(current_user), class: "navbarItem", data: { "turbo-method": :delete } %>
+
+<% else %>
+    <%= link_to "Login", login_path, class: "navbarItem" %>
+    <%= link_to "Sign Up", signup_path, class: "navbarItem" %>
+<% end %>
+
+</p>
+</div>

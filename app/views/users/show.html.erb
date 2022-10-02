@@ -1,0 +1,22 @@
+<h1><%= @user.username %>'s profile</h1>
+<% # galima ir su skliausteliais pasirodo :) %>
+<%= gravatar_for(@user, size: 200) %>
+
+<div>
+    <% if logged_in? %>
+        <% if @user == current_user %>
+            <%= link_to "Edit your profile", edit_user_path(@user), class: "btn" %>
+        <% end %>
+        <% if current_user.admin? %>
+            <%= link_to "Delete_user", user_path(@user), class: "navbarItem", data: { "turbo-method": :delete } %>
+        <% end %>
+    <% end %>
+</div>
+
+<h3> User articles: </h3>
+
+<%= will_paginate @articles, :container => false %>
+
+<%= render "articles/article" %>
+
+<%= will_paginate @articles, :container => false %>
